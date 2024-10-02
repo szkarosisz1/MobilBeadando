@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,9 @@ class CustomAdapter(
         holder.bookAuthorTxt.text = bookAuthor[position]
         holder.bookPagesTxt.text = bookPages[position]
 
+        val translateAnim = AnimationUtils.loadAnimation(context, R.anim.translate_anim)
+        holder.mainLayout.startAnimation(translateAnim)
+
         holder.mainLayout.setOnClickListener {
             val intent = Intent(context, UpdateActivity::class.java).apply {
                 putExtra("id", bookId[position])
@@ -53,4 +57,3 @@ class CustomAdapter(
         val mainLayout: LinearLayout = itemView.findViewById(R.id.mainLayout)
     }
 }
-

@@ -17,12 +17,12 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddActivity"
-            android:label="Add Book"
+            android:label="Új könyv hozzáadása"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Book Library">
+            android:label="Könyvtári alkalmazás">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

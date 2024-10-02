@@ -47,9 +47,9 @@ class DatabaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
 
         val result = db.insert(TABLE_NAME, null, cv)
         if (result == -1L) {
-            Toast.makeText(context, "Added Failed.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Hozzáadás sikertelen.", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Successfully Added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Sikeresen hozzáadva!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -70,13 +70,19 @@ class DatabaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return result != -1
     }
 
-    /*fun deleteOneRow(rowId: String) {
+    fun deleteOneRow(rowId: String) {
         val db = this.writableDatabase
         val result = db.delete(TABLE_NAME, "_id=?", arrayOf(rowId))
         if (result == -1) {
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Törlés sikertelen.", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Successfully Deleted!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Sikeresen törölve!", Toast.LENGTH_SHORT).show()
         }
-    }*/
+    }
+
+    fun deleteAllData() {
+        writableDatabase.use { db ->
+            db.execSQL("DELETE FROM $TABLE_NAME")
+        }
+    }
 }
